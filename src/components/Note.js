@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Note({ note }) {
+function Note({ note, deleteNote, index }) {
 
   return (
     <tr>
@@ -9,6 +9,8 @@ function Note({ note }) {
       <td>{ note.body }</td>
       <td>{ note.author }</td>
       <td>{ note.status }</td>
+      <td><button onClick={ () => deleteNote(index) } className="btn btn-danger">Delete</button>
+      </td>
     </tr>
   );
 }

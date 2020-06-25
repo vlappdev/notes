@@ -13,13 +13,21 @@ function App() {
     setNotes([...notes, newNote])
   };
 
+  const deleteNote = (index)=>{
+    const newStateOfNotes = notes.filter((note)=>{
+      return notes.indexOf(note) !== index
+    });
+
+    setNotes(newStateOfNotes);
+  };
+
   return (
     <>
       <h3 className="text-center">Notes App</h3>
-      <NotesTable notes={ notes } />
+      <NotesTable notes={ notes } deleteNote={ deleteNote }/>
       <button onClick={() => {setShowModal(true)}} className="btn btn-primary">New note</button>
       { showModal && (
-        <AddNoteModal onCloseRequest={() => setShowModal(false)} addNewNoteToState={addNewNoteToState}/>
+        <AddNoteModal onCloseRequest={() => setShowModal(false)} addNewNoteToState={ addNewNoteToState }/>
       )}
     </>
   );

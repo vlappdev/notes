@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 
-function AddNoteModal(props) {
+function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
+
+  const dateObj = new Date();
+  const day = dateObj.getDate();
+  const month = dateObj.getMonth() + 1;
+  const year = dateObj.getFullYear();
+
+  const date = day + "/" + month + "/" + year;
 
   const [newNote, setNewNote] = useState({
-    date:"",
+    date: date,
     title:"",
     body:"",
     author:"",
@@ -13,8 +20,8 @@ function AddNoteModal(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    props.addNewNoteToState(newNote)
-    props.onCloseRequest()
+    addNewNoteToState(newNote)
+    onCloseRequest()
   };
 
   const handleChange = (e) => {
@@ -30,7 +37,7 @@ function AddNoteModal(props) {
         <div className="modal-content">
           <div className="modal-header">
             <h5 className="modal-title" id="exampleModalLabel">Add Note</h5>
-            <button onClick={()=> props.onCloseRequest()} type="button" className="close">
+            <button onClick={()=> onCloseRequest()} type="button" className="close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -50,7 +57,7 @@ function AddNoteModal(props) {
                 </textarea>
               </div>
               <div className="modal-footer mt-5">
-                <button onClick={()=> props.onCloseRequest()} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button onClick={()=> onCloseRequest()} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="submit" className="btn btn-primary">Add Note</button>
               </div>
             </form>
