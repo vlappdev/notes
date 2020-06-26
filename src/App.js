@@ -3,7 +3,7 @@ import data from "./data.js"
 
 import NotesTable from "./components/NotesTable"
 import AddNoteModal from "./components/AddNoteModal"
-import FilterByName from "./components/FilterByName"
+import FilterByTitle from "./components/FilterByTitle"
 
 function App() {
 
@@ -49,7 +49,7 @@ function App() {
   return (
     <>
       <h3 className="text-center">Notes App</h3>
-      <FilterByName notes = { notes } getInputValue = { getInputValue }/>
+      <FilterByTitle notes = { notes } getInputValue = { getInputValue }/>
       <NotesTable filteredNotes={ filteredNotes } deleteNote={ deleteNote } sortByDate = { sortByDate }/>
       <button onClick={() => {setShowModal(true)}} className="btn btn-primary">New note</button>
       { showModal && (

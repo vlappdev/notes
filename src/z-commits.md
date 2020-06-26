@@ -3,3 +3,4 @@
 02 - changed delete and add functionality (by index), added date
 03 - added sort functionality
 04 - added filter functionality
+05 - fixed modal

@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FilterByName({ notes, getInputValue }) {
+function FilterByTitle({ notes, getInputValue }) {
 
   const handleChange = (e) => {
     const { value } = e.target;
@@ -17,4 +17,4 @@ function FilterByName({ notes, getInputValue }) {
   );
 }
 
-export default FilterByName;
+export default FilterByTitle;
