@@ -44,12 +44,12 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
           <div className="modal-body pb-0 px-0">
             <form onSubmit={ handleSubmit }>
               <div className="form-group px-3">
-                <label htmlFor="recipient-name" className="col-form-label">Title:</label>
-                <input onChange={ handleChange } type="text" value={ newNote.title } className="form-control" name="title" id="recipient-name" />
+                <label htmlFor="title" className="col-form-label">Title:</label>
+                <input onChange={ handleChange } type="text" value={ newNote.title } className="form-control" name="title" id="title" />
               </div>
               <div className="form-group px-3">
-                <label htmlFor="recipient-name" className="col-form-label">Author name:</label>
-                <input onChange={ handleChange } type="text" value={ newNote.author } className="form-control" name="author" id="recipient-name" />
+                <label htmlFor="author" className="col-form-label">Author name:</label>
+                <input onChange={ handleChange } type="text" value={ newNote.author } className="form-control" name="author" id="author" />
               </div>
               <div className="form-group px-3">
                 <label htmlFor="message-text" className="col-form-label">Note:</label>

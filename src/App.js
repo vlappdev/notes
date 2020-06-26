@@ -1,13 +1,28 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import data from "./data.js"
 
 import NotesTable from "./components/NotesTable"
 import AddNoteModal from "./components/AddNoteModal"
+import FilterByName from "./components/FilterByName"
 
 function App() {
 
   const [notes, setNotes] = useState(data);
   const [showModal, setShowModal] = useState(false);
+  const [filteredNotes, setFilteredNotes] = useState([]);
+  const [search, setSearch] = useState("");
+
+  useEffect(() => {
+    setFilteredNotes(
+      notes.filter(( note ) => {
+        return note.title.includes(search)
+      })
+    )
+  }, [search, notes]);
+
+  const getInputValue =  (inputValue) => {
+    setSearch(inputValue)
+  };
 
   const addNewNoteToState = (newNote) => {
     setNotes([...notes, newNote])
@@ -34,7 +49,8 @@ function App() {
   return (
     <>
       <h3 className="text-center">Notes App</h3>
-      <NotesTable notes={ notes } deleteNote={ deleteNote } sortByDate = { sortByDate }/>
+      <FilterByName notes = { notes } getInputValue = { getInputValue }/>
+      <NotesTable filteredNotes={ filteredNotes } deleteNote={ deleteNote } sortByDate = { sortByDate }/>
       <button onClick={() => {setShowModal(true)}} className="btn btn-primary">New note</button>
       { showModal && (
         <AddNoteModal onCloseRequest={() => setShowModal(false)} addNewNoteToState={ addNewNoteToState }/>

@@ -1,9 +1,9 @@
 import React from 'react';
 import Note from "./Note"
 
-function NotesTable({notes, deleteNote, sortByDate}) {
+function NotesTable({ filteredNotes, deleteNote, sortByDate }) {
 
-  const allNotes = notes.map((note, index) => {
+  const allNotes = filteredNotes.map(( note, index ) => {
     return <Note note = { note }
                  key={ index }
                  index={ index }
@@ -21,7 +21,7 @@ function NotesTable({notes, deleteNote, sortByDate}) {
           </span>
         </th>
         <th scope="col">Title</th>
-        <th scope="col">Body</th>
+        <th scope="col">Note</th>
         <th scope="col">Author</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th>
