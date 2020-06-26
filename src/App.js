@@ -21,10 +21,20 @@ function App() {
     setNotes(newStateOfNotes);
   };
 
+  const sortByDate = () => {
+    setNotes(prevNotes => {
+      const sortedNotes = prevNotes.sort((a,b)=>{
+        return new Date(...a.date.split("/")) - new Date(...b.date.split("/"))
+      });
+
+      return prevNotes.splice(0, prevNotes.length, ...sortedNotes);
+    })
+  };
+
   return (
     <>
       <h3 className="text-center">Notes App</h3>
-      <NotesTable notes={ notes } deleteNote={ deleteNote }/>
+      <NotesTable notes={ notes } deleteNote={ deleteNote } sortByDate = { sortByDate }/>
       <button onClick={() => {setShowModal(true)}} className="btn btn-primary">New note</button>
       { showModal && (
         <AddNoteModal onCloseRequest={() => setShowModal(false)} addNewNoteToState={ addNewNoteToState }/>

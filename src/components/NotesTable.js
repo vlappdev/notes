@@ -1,7 +1,7 @@
 import React from 'react';
 import Note from "./Note"
 
-function NotesTable({notes, deleteNote}) {
+function NotesTable({notes, deleteNote, sortByDate}) {
 
   const allNotes = notes.map((note, index) => {
     return <Note note = { note }
@@ -14,7 +14,12 @@ function NotesTable({notes, deleteNote}) {
     <table className="table table-striped">
       <thead>
       <tr>
-        <th scope="col">Date</th>
+        <th scope="col">
+          <span className="d-flex justify-content-between">
+            Date
+            <span onClick={() => sortByDate()} className="sort-by"></span>
+          </span>
+        </th>
         <th scope="col">Title</th>
         <th scope="col">Body</th>
         <th scope="col">Author</th>
