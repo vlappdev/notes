@@ -4,3 +4,4 @@
 03 - added sort functionality
 04 - added filter functionality
 05 - fixed modal
+06 - added functionalities publish and draft

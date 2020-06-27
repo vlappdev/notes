@@ -21,7 +21,7 @@ function NotesTable({ filteredNotes, deleteNote, sortByDate }) {
           </span>
         </th>
         <th scope="col">Title</th>
-        <th scope="col">Note</th>
+        <th scope="col">Body</th>
         <th scope="col">Author</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th>

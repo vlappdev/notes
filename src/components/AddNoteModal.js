@@ -14,14 +14,22 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
     title:"",
     body:"",
     author:"",
-    status:""
+    status:"published"
   });
+
+  const setSubmitButton = (noteStatus) => {
+    const status = noteStatus !== "published" ? "draft" : noteStatus;
+
+    setNewNote({
+      ...newNote, status
+    })
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    addNewNoteToState(newNote)
-    onCloseRequest()
+    addNewNoteToState(newNote);
+    onCloseRequest();
   };
 
   const handleChange = (e) => {
@@ -58,8 +66,9 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
                   </textarea>
                 </div>
                 <div className="modal-footer mt-5">
-                  <button onClick={()=> onCloseRequest()} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="submit" className="btn btn-primary">Add Note</button>
+                  <button onClick={() => onCloseRequest()} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button onClick={ () => setSubmitButton() } type="submit" className="btn btn-primary">Save as Draft</button>
+                  <button onClick={ () => setSubmitButton(newNote.status) } type="submit" className="btn btn-primary">Add Note</button>
                 </div>
               </form>
             </div>
