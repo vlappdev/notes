@@ -8,3 +8,4 @@
 07 - fixed filter
 08 - added reverse sort
 09 - added style for some detail in app 
+10 - set for deploy
