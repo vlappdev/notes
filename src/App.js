@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     setFilteredNotes(
       notes.filter(( note ) => {
-        return note.title.includes(search)
+        return note.title.slice(0, search.length) === search
       })
     )
   }, [search, notes]);
