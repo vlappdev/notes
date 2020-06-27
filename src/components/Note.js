@@ -15,12 +15,12 @@ function Note({ note, deleteNote, index }) {
 
   return (
     <tr>
-      <td>{ note.date }</td>
-      <td>{ note.title }</td>
-      <td>{ note.body }</td>
-      <td>{ note.author }</td>
-      <td>{ status }</td>
-      <td>
+      <td className="align-middle">{ note.date }</td>
+      <td className="align-middle">{ note.title }</td>
+      <td className="align-middle">{ note.body }</td>
+      <td className="align-middle">{ note.author }</td>
+      <td className="align-middle">{ status }</td>
+      <td className="align-middle">
         <button onClick={ () => deleteNote(index) } className="btn btn-danger">Delete</button>
       </td>
     </tr>

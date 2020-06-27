@@ -7,3 +7,4 @@
 06 - added functionalities publish and draft
 07 - fixed filter
 08 - added reverse sort
+09 - added style for some detail in app 

@@ -49,15 +49,15 @@ function App() {
   };
 
   return (
-    <>
-      <h3 className="text-center">Notes App</h3>
+    <div className="container">
+      <h3 className="text-center mt-5">Notes App</h3>
       <FilterByTitle notes = { notes } getInputValue = { getInputValue }/>
       <NotesTable filteredNotes={ filteredNotes } deleteNote={ deleteNote } sortByDate = { sortByDate }/>
       <button onClick={() => {setShowModal(true)}} className="btn btn-primary">New note</button>
       { showModal && (
         <AddNoteModal onCloseRequest={() => setShowModal(false)} addNewNoteToState={ addNewNoteToState }/>
       )}
-    </>
+    </div>
   );
 }
 
