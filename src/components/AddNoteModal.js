@@ -1,24 +1,27 @@
 import React, { useState } from 'react';
+import { constants } from "../constants"
 
 function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
 
-  const dateObj = new Date();
-  const day = dateObj.getDate();
-  const month = dateObj.getMonth() + 1;
-  const year = dateObj.getFullYear();
+  const [date] = useState(() => {
+    const dateObj = new Date();
+    const day = dateObj.getDate();
+    const month = dateObj.getMonth() + 1;
+    const year = dateObj.getFullYear();
 
-  const date = day + "/" + month + "/" + year;
+    return day + "/" + month + "/" + year;
+  });
 
   const [newNote, setNewNote] = useState({
     date: date,
     title:"",
     body:"",
     author:"",
-    status:"published"
+    status: constants.PUBLISHED
   });
 
   const setSubmitButton = (noteStatus) => {
-    const status = noteStatus !== "published" ? "draft" : noteStatus;
+    const status = noteStatus !== constants.PUBLISHED ? constants.DRAFT : noteStatus;
 
     setNewNote({
       ...newNote, status

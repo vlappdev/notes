@@ -9,3 +9,4 @@
 08 - added reverse sort
 09 - added style for some detail in app 
 10 - set for deploy
+11 - added constants
