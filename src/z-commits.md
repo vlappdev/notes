@@ -5,3 +5,5 @@
 04 - added filter functionality
 05 - fixed modal
 06 - added functionalities publish and draft
+07 - fixed filter
+08 - added reverse sort

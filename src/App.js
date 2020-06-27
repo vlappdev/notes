@@ -11,6 +11,7 @@ function App() {
   const [showModal, setShowModal] = useState(false);
   const [filteredNotes, setFilteredNotes] = useState([]);
   const [search, setSearch] = useState("");
+  const [reverse, setReverse] = useState(false);
 
   useEffect(() => {
     setFilteredNotes(
@@ -37,12 +38,13 @@ function App() {
   };
 
   const sortByDate = () => {
-    setNotes(prevNotes => {
-      const sortedNotes = prevNotes.sort((a,b)=>{
-        return new Date(...a.date.split("/")) - new Date(...b.date.split("/"))
-      });
+    const reverseParam = reverse ? -1: 1;
+    setReverse(!reverse);
 
-      return prevNotes.splice(0, prevNotes.length, ...sortedNotes);
+    setNotes(prevNotes => {
+      return [...prevNotes].sort((a, b) => {
+        return reverseParam * (new Date(...a.date.split("/")) - new Date(...b.date.split("/")))
+      });
     })
   };
 
