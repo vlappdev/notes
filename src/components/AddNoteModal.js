@@ -1,5 +1,5 @@
 import React, {useState, useRef, useEffect} from 'react';
-import { constants } from "../constants"
+import { CONSTANTS } from "../Constants"
 
 function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
 
@@ -17,7 +17,7 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
     title:"",
     body:"",
     author:"",
-    status: constants.PUBLISHED
+    status: CONSTANTS.PUBLISHED
   });
 
   useEffect(()=>{
@@ -27,8 +27,8 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
   const inputTitle = useRef();
 
   const setSubmitButton = (noteStatus) => {
-    const status = noteStatus !== constants.PUBLISHED ?
-                    constants.DRAFT :
+    const status = noteStatus !== CONSTANTS.PUBLISHED ?
+                    CONSTANTS.DRAFT :
                     noteStatus;
 
     setNewNote({

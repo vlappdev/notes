@@ -11,3 +11,4 @@
 10 - set for deploy
 11 - added constants
 12 - added focus on input field and set arrows by sort direction
+13 - added prompt for delete and change constant variable name

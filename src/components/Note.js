@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { constants } from "../constants"
+import { CONSTANTS } from "../Constants"
 
 function Note({ note, deleteNote, index }) {
 
   const [status, setStatus] = useState(() => {
-    const initStatus = constants.PUBLISHED;
+    const initStatus = CONSTANTS.PUBLISHED;
     return  note.status === initStatus ?
             note.status :
             <button onClick={ () => setStatus(initStatus)}

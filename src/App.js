@@ -4,6 +4,7 @@ import data from "./data.js"
 import NotesTable from "./components/NotesTable"
 import AddNoteModal from "./components/AddNoteModal"
 import FilterByTitle from "./components/FilterByTitle"
+import { CONSTANTS } from "./Constants"
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
 
   useEffect(() => {
     setFilteredNotes(
+
       notes.filter(( note ) => {
         return note.title.slice(0, search.length) === search
       })
@@ -22,7 +24,7 @@ function App() {
   }, [search, notes]);
 
   const getInputValue =  (inputValue) => {
-    setSearch(inputValue)
+    setSearch(inputValue.toLowerCase())
   };
 
   const addNewNoteToState = (newNote) => {
@@ -34,6 +36,7 @@ function App() {
       return notes.indexOf(note) !== index
     });
 
+    window.confirm( CONSTANTS.DELETE_MESSAGE);
     setNotes(newStateOfNotes);
   };
 

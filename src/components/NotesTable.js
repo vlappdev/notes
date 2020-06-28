@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Note from "./Note"
-import { constants }from '../constants'
+import { CONSTANTS }from '../Constants'
 
 function NotesTable({ filteredNotes, deleteNote, sortByDate, reverse }) {
 
@@ -16,8 +16,8 @@ function NotesTable({ filteredNotes, deleteNote, sortByDate, reverse }) {
   useEffect(() => {
     !(activeArrow ==="" && reverse === false) &&
     setActiveArrow( reverse ?
-                    constants.ARROW_UP :
-                    constants.ARROW_DOWN
+                    CONSTANTS.ARROW_UP :
+                    CONSTANTS.ARROW_DOWN
     )
   },[reverse, activeArrow]);
 
