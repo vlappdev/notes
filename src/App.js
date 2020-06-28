@@ -51,12 +51,22 @@ function App() {
   return (
     <div className="container">
       <h3 className="text-center mt-5">Notes App</h3>
-      <FilterByTitle notes = { notes } getInputValue = { getInputValue }/>
-      <NotesTable filteredNotes={ filteredNotes } deleteNote={ deleteNote } sortByDate = { sortByDate }/>
-      <button onClick={() => {setShowModal(true)}} className="btn btn-primary">New note</button>
+
+      <FilterByTitle notes = { notes }
+                     getInputValue = { getInputValue }
+      />
+      <NotesTable filteredNotes={ filteredNotes }
+                  deleteNote={ deleteNote }
+                  sortByDate = { sortByDate }
+                  reverse ={ reverse }
+      />
       { showModal && (
-        <AddNoteModal onCloseRequest={() => setShowModal(false)} addNewNoteToState={ addNewNoteToState }/>
+        <AddNoteModal onCloseRequest={() => setShowModal(false)}
+                      addNewNoteToState={ addNewNoteToState }
+        />
       )}
+
+      <button onClick={() => {setShowModal(true)}} className="btn btn-primary">New note</button>
     </div>
   );
 }

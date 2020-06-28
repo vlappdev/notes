@@ -10,3 +10,4 @@
 09 - added style for some detail in app 
 10 - set for deploy
 11 - added constants
+12 - added focus on input field and set arrows by sort direction

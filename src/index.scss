@@ -24,9 +24,16 @@
     border-top-color: #666;
     margin-top: 1px;
   }
-}
-table tr td{
-  vertical-align: middle;
+  &.arrow-down{
+    &:before{
+      opacity: 0.5;
+    }
+  }
+  &.arrow-up{
+    &:after{
+      opacity: 0.5;
+    }
+  }
 }
 
 

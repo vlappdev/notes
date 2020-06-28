@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState, useRef, useEffect} from 'react';
 import { constants } from "../constants"
 
 function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
@@ -20,8 +20,16 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
     status: constants.PUBLISHED
   });
 
+  useEffect(()=>{
+    inputTitle.current.focus();
+  }, []);
+
+  const inputTitle = useRef();
+
   const setSubmitButton = (noteStatus) => {
-    const status = noteStatus !== constants.PUBLISHED ? constants.DRAFT : noteStatus;
+    const status = noteStatus !== constants.PUBLISHED ?
+                    constants.DRAFT :
+                    noteStatus;
 
     setNewNote({
       ...newNote, status
@@ -57,7 +65,7 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
               <form onSubmit={ handleSubmit }>
                 <div className="form-group px-3">
                   <label htmlFor="title" className="col-form-label">Title:</label>
-                  <input onChange={ handleChange } type="text" value={ newNote.title } className="form-control" name="title" id="title" />
+                  <input onChange={ handleChange } type="text" ref={ inputTitle } value={ newNote.title } className="form-control" name="title" id="title" />
                 </div>
                 <div className="form-group px-3">
                   <label htmlFor="author" className="col-form-label">Author name:</label>

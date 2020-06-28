@@ -1,7 +1,10 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import Note from "./Note"
+import { constants }from '../constants'
 
-function NotesTable({ filteredNotes, deleteNote, sortByDate }) {
+function NotesTable({ filteredNotes, deleteNote, sortByDate, reverse }) {
+
+  const[ activeArrow, setActiveArrow ] = useState("");
 
   const allNotes = filteredNotes.map(( note, index ) => {
     return <Note note = { note }
@@ -10,6 +13,14 @@ function NotesTable({ filteredNotes, deleteNote, sortByDate }) {
                  deleteNote={ deleteNote }/>
   });
 
+  useEffect(() => {
+    !(activeArrow ==="" && reverse === false) &&
+    setActiveArrow( reverse ?
+                    constants.ARROW_UP :
+                    constants.ARROW_DOWN
+    )
+  },[reverse, activeArrow]);
+
   return (
     <table className="table table-striped">
       <thead>
@@ -17,7 +28,9 @@ function NotesTable({ filteredNotes, deleteNote, sortByDate }) {
         <th scope="col">
           <span className="d-flex justify-content-between">
             Date
-            <span onClick={() => sortByDate()} className="sort-by"></span>
+            <span onClick={() => sortByDate()}
+                  className={`sort-by ${activeArrow}`}>
+            </span>
           </span>
         </th>
         <th scope="col">Title</th>
