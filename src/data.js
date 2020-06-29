@@ -1,27 +1,27 @@
 const data = [
   {
-    "date":"21/10/2010",
+    "date":"10/21/2010",
     "title":"first note",
     "body":"text about note 01",
     "author":"Vladimir",
     "status":"published"
   },
   {
-    "date":"5/8/2019",
+    "date":"8/5/2019",
     "title":"second note",
     "body":"text about note 02",
     "author":"Vladimir",
     "status":"published"
   },
   {
-    "date":"24/12/2008",
+    "date":"12/24/2008",
     "title":"third note",
     "body":"text about note 03",
     "author":"Vladimir",
     "status":"draft"
   },
   {
-    "date":"17/12/2018",
+    "date":"12/17/2018",
     "title":"fourth note",
     "body":"text about note 04",
     "author":"Vladimir",
@@ -33,7 +33,7 @@ const data = [
     "body":"text about note 05",
     "author":"Vladimir",
     "status":"published"
-  },
+  }
 ];
 
 export default data

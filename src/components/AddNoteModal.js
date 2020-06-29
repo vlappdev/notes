@@ -9,7 +9,7 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
     const month = dateObj.getMonth() + 1;
     const year = dateObj.getFullYear();
 
-    return day + "/" + month + "/" + year;
+    return month + "/" + day + "/" + year;
   });
 
   const [newNote, setNewNote] = useState({

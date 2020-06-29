@@ -46,7 +46,7 @@ function App() {
 
     setNotes(prevNotes => {
       return [...prevNotes].sort((a, b) => {
-        return reverseParam * (new Date(...a.date.split("/")) - new Date(...b.date.split("/")))
+        return reverseParam * (new Date(a.date) - new Date(b.date))
       });
     })
   };
