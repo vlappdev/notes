@@ -14,3 +14,4 @@
 13 - added prompt for delete and change constant variable name
 14 - added message (no results) and error messages (add new note)
 15 - refactored sort date
+16 - added notes file
