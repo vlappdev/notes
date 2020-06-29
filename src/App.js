@@ -9,8 +9,8 @@ function App() {
 
   const [notes, setNotes] = useState([]);
   const [showModal, setShowModal] = useState(false);
-  const [filteredNotes, setFilteredNotes] = useState([]);
   const [reverse, setReverse] = useState(false);
+  const [inputValue, setInputValue] = useState("");
 
   useEffect(()=>{
     fetch("https://raw.githubusercontent.com/vlappdev/notes/master/src/notes.json")
@@ -18,21 +18,12 @@ function App() {
         return res.json()
       })
       .then( data => {
-        console.log(200)
         setNotes(data);
       });
   },[]);
 
-  useEffect(()=>{
-    setFilteredNotes(notes)
-  },[notes]);
-
-  const filterByInputValue =  (inputValue) => {
-    setFilteredNotes(
-      notes.filter(( note ) => {
-        return note.title.slice(0, inputValue.length) === inputValue.toLowerCase()
-      })
-    )
+  const getInputValue = (inputValue) => {
+    setInputValue(inputValue)
   };
 
   const addNewNoteToState = (newNote) => {
@@ -64,12 +55,13 @@ function App() {
       <h3 className="text-center mt-5">Notes App</h3>
 
       <FilterByTitle notes = { notes }
-                     filterByInputValue = { filterByInputValue }
+                     getInputValue = { getInputValue }
       />
-      <NotesTable filteredNotes={ filteredNotes }
+      <NotesTable notes={ notes }
                   deleteNote={ deleteNote }
                   sortByDate = { sortByDate }
                   reverse ={ reverse }
+                  inputValue = { inputValue }
       />
       { showModal && (
         <AddNoteModal onCloseRequest={() => setShowModal(false)}
@@ -77,7 +69,10 @@ function App() {
         />
       )}
 
-      <button onClick={() => {setShowModal(true)}} className="btn btn-primary">New note</button>
+      <button onClick={() => {setShowModal(true)}}
+              className="btn btn-primary">
+              New note
+      </button>
     </div>
   );
 }

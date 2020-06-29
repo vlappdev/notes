@@ -2,16 +2,18 @@ import React, {useEffect, useState} from 'react';
 import Note from "./Note"
 import { CONSTANTS }from '../Constants'
 
-function NotesTable({ filteredNotes, deleteNote, sortByDate, reverse }) {
+function NotesTable({ notes, deleteNote, sortByDate, reverse, inputValue }) {
 
+  const [filteredNotes, setFilteredNotes] = useState(notes);
   const[ activeArrow, setActiveArrow ] = useState("");
 
-  const allNotes = filteredNotes.map(( note, index ) => {
-    return <Note note = { note }
-                 key={ index }
-                 index={ index }
-                 deleteNote={ deleteNote }/>
-  });
+  useEffect(()=>{
+    setFilteredNotes(
+      notes.filter(( note ) => {
+        return note.title.slice(0, inputValue.length) === inputValue.toLowerCase()
+      })
+    )
+  }, [notes, inputValue]);
 
   useEffect(() => {
     !(activeArrow ==="" && reverse === false) &&
@@ -20,6 +22,13 @@ function NotesTable({ filteredNotes, deleteNote, sortByDate, reverse }) {
                     CONSTANTS.ARROW_DOWN
     )
   },[reverse, activeArrow]);
+
+  const allNotes = filteredNotes.map(( note, index ) => {
+    return <Note note = { note }
+                 key={ index }
+                 index={ index }
+                 deleteNote={ deleteNote }/>
+  });
 
   return (
     <table className="table table-striped">
