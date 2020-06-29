@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react"
-import data from "./data.js"
 
 import NotesTable from "./components/NotesTable"
 import AddNoteModal from "./components/AddNoteModal"
@@ -8,23 +7,32 @@ import { CONSTANTS } from "./Constants"
 
 function App() {
 
-  const [notes, setNotes] = useState(data);
+  const [notes, setNotes] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [filteredNotes, setFilteredNotes] = useState([]);
-  const [search, setSearch] = useState("");
   const [reverse, setReverse] = useState(false);
 
-  useEffect(() => {
-    setFilteredNotes(
+  useEffect(()=>{
+    fetch("https://raw.githubusercontent.com/vlappdev/notes/master/src/notes.json")
+      .then(res => {
+        return res.json()
+      })
+      .then( data => {
+        console.log(200)
+        setNotes(data);
+      });
+  },[]);
 
+  useEffect(()=>{
+    setFilteredNotes(notes)
+  },[notes]);
+
+  const filterByInputValue =  (inputValue) => {
+    setFilteredNotes(
       notes.filter(( note ) => {
-        return note.title.slice(0, search.length) === search
+        return note.title.slice(0, inputValue.length) === inputValue.toLowerCase()
       })
     )
-  }, [search, notes]);
-
-  const getInputValue =  (inputValue) => {
-    setSearch(inputValue.toLowerCase())
   };
 
   const addNewNoteToState = (newNote) => {
@@ -56,7 +64,7 @@ function App() {
       <h3 className="text-center mt-5">Notes App</h3>
 
       <FilterByTitle notes = { notes }
-                     getInputValue = { getInputValue }
+                     filterByInputValue = { filterByInputValue }
       />
       <NotesTable filteredNotes={ filteredNotes }
                   deleteNote={ deleteNote }

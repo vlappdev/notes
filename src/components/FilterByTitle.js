@@ -1,10 +1,10 @@
 import React from 'react';
 
-function FilterByTitle({ notes, getInputValue }) {
+function FilterByTitle({ notes, filterByInputValue }) {
 
   const handleChange = (e) => {
     const { value } = e.target;
-    getInputValue(value)
+    filterByInputValue(value)
   };
 
   return (

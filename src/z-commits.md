@@ -15,3 +15,4 @@
 14 - added message (no results) and error messages (add new note)
 15 - refactored sort date
 16 - added notes file
+17 - refactored filter
