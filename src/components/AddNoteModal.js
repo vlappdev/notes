@@ -77,9 +77,9 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
                          ref={ inputTitle }
                          value={ newNote.title }
                          className={`form-control 
-                                      ${ newNote.submitted && !newNote.title ?
-                                       CONSTANTS.IS_INVALID :
-                                       ""}`
+                            ${ newNote.submitted && !newNote.title ?
+                                CONSTANTS.IS_INVALID : ""
+                            }`
                          }
                          name="title"
                          id="title"
@@ -93,9 +93,9 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
                          type="text"
                          value={ newNote.author }
                          className={`form-control 
-                                      ${ newNote.submitted && !newNote.author ? 
-                                        CONSTANTS.IS_INVALID : 
-                                        ""}`
+                            ${ newNote.submitted && !newNote.author ? 
+                                CONSTANTS.IS_INVALID : ""
+                            }`
                          }
                          name="author"
                          id="author" />
@@ -108,9 +108,9 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
                   <textarea onChange={ handleChange }
                             value={ newNote.body }
                             className={`form-control 
-                                          ${ newNote.submitted && !newNote.body ?
-                                          CONSTANTS.IS_INVALID :
-                                          ""}`
+                              ${ newNote.submitted && !newNote.body ?
+                                  CONSTANTS.IS_INVALID : ""
+                              }`
                             }
                             name="body"
                             id="message-text">

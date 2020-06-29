@@ -16,3 +16,4 @@
 15 - refactored sort date
 16 - added notes file
 17 - refactored filter
+18 - refactored jsx AddNoteModal
