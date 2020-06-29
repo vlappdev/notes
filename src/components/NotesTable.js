@@ -34,14 +34,21 @@ function NotesTable({ filteredNotes, deleteNote, sortByDate, reverse }) {
           </span>
         </th>
         <th scope="col">Title</th>
-        <th scope="col">Body</th>
+        <th scope="col">Description</th>
         <th scope="col">Author</th>
         <th scope="col">Status</th>
         <th scope="col">Action</th>
       </tr>
       </thead>
       <tbody>
-        { allNotes }
+      { allNotes.length ? allNotes :
+        <tr>
+          <td className="no-results text-center align-middle"
+                colSpan={12}>
+                { CONSTANTS.NO_RESULTS }
+          </td>
+        </tr>
+      }
       </tbody>
     </table>
   );

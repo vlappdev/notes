@@ -12,3 +12,4 @@
 11 - added constants
 12 - added focus on input field and set arrows by sort direction
 13 - added prompt for delete and change constant variable name
+14 - added message (no results) and error messages (add new note)

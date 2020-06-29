@@ -17,7 +17,8 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
     title:"",
     body:"",
     author:"",
-    status: CONSTANTS.PUBLISHED
+    status: CONSTANTS.PUBLISHED,
+    submitted: false
   });
 
   useEffect(()=>{
@@ -39,8 +40,14 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    addNewNoteToState(newNote);
-    onCloseRequest();
+    setNewNote({
+      ...newNote, submitted: true
+    });
+
+    if(newNote.title && newNote.author && newNote.body) {
+      addNewNoteToState(newNote);
+      onCloseRequest();
+    }
   };
 
   const handleChange = (e) => {
@@ -65,16 +72,52 @@ function AddNoteModal({ onCloseRequest, addNewNoteToState }) {
               <form onSubmit={ handleSubmit }>
                 <div className="form-group px-3">
                   <label htmlFor="title" className="col-form-label">Title:</label>
-                  <input onChange={ handleChange } type="text" ref={ inputTitle } value={ newNote.title } className="form-control" name="title" id="title" />
+                  <input onChange={ handleChange }
+                         type="text"
+                         ref={ inputTitle }
+                         value={ newNote.title }
+                         className={`form-control 
+                                      ${ newNote.submitted && !newNote.title ?
+                                       CONSTANTS.IS_INVALID :
+                                       ""}`
+                         }
+                         name="title"
+                         id="title"
+                  />
+                  { newNote.submitted && !newNote.title &&
+                  <p className="invalid-feedback">{ CONSTANTS.TITLE_ERROR_MESSAGE }</p>}
                 </div>
                 <div className="form-group px-3">
                   <label htmlFor="author" className="col-form-label">Author name:</label>
-                  <input onChange={ handleChange } type="text" value={ newNote.author } className="form-control" name="author" id="author" />
+                  <input onChange={ handleChange }
+                         type="text"
+                         value={ newNote.author }
+                         className={`form-control 
+                                      ${ newNote.submitted && !newNote.author ? 
+                                        CONSTANTS.IS_INVALID : 
+                                        ""}`
+                         }
+                         name="author"
+                         id="author" />
+                  { newNote.submitted && !newNote.author &&
+                    <p className="invalid-feedback">{ CONSTANTS.AUTHOR_ERROR_MESSAGE }</p>
+                  }
                 </div>
                 <div className="form-group px-3">
-                  <label htmlFor="message-text" className="col-form-label">Note:</label>
-                  <textarea onChange={ handleChange } value={ newNote.body} className="form-control" name="body" id="message-text">
+                  <label htmlFor="message-text" className="col-form-label">Description:</label>
+                  <textarea onChange={ handleChange }
+                            value={ newNote.body }
+                            className={`form-control 
+                                          ${ newNote.submitted && !newNote.body ?
+                                          CONSTANTS.IS_INVALID :
+                                          ""}`
+                            }
+                            name="body"
+                            id="message-text">
                   </textarea>
+                  { newNote.submitted && !newNote.body &&
+                  <p className="invalid-feedback">{ CONSTANTS.BODY_ERROR_MESSAGE }</p>
+                  }
                 </div>
                 <div className="modal-footer mt-5">
                   <button onClick={() => onCloseRequest()} type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
