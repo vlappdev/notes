@@ -17,3 +17,4 @@
 16 - added notes file
 17 - refactored filter
 18 - refactored jsx AddNoteModal
+19 - changed README file
